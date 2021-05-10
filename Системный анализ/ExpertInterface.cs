@@ -15,7 +15,7 @@ namespace Системный_анализ
         private Menu back;
         private data DATA = new data();
         private login close;
-        private int ProblemID, ID, Page = 1, Zx = 0, Zy = 1, zX = 0, zY = 1, Page4 = 1;
+        private int ProblemID, ID, Page = 1, Zx = 0, Zy = 1, zX = 0, zY = 1, Page4 = 1, iD;
         private int end = 0, Method = 0, temp, End = 0;
         private bool load = true; string tempp = "Количество нераспределенных значений - ";
         private List<bool> Meth = new List<bool>();
@@ -309,7 +309,8 @@ namespace Системный_анализ
             { 
                 Meth.Add(false);
             }
-           
+
+            iD = ID;
 
             switch (DATA.experts[ID][6])
             {
@@ -659,7 +660,7 @@ namespace Системный_анализ
 
 
                             LabelBoth.Visible = false;
-                            WhatToDoLabel.Text = "Звполните поля значений для каждой альтернативы числом от 0 до 1, сумма всех значений должна составлять единицу";
+                            WhatToDoLabel.Text = "Заполните поля значений для каждой альтернативы числом от 0 до 1, сумма всех значений должна составлять единицу";
                             NextButton.Visible = false;
                             SelectPage.Visible = false;
                             label2.Visible = false;
@@ -766,7 +767,7 @@ namespace Системный_анализ
                         dataGridView.Columns.Clear();
 
                         //ID = DATA.exp[ProblemID].Count - 1;
-                        WhatToDoLabel.Text = "Звполните поля значений для каждой альтернативы, пользуясь пользуяст 10-бальной шкалой, причем чем выше оенка, тем приоритетней альтернатива";
+                        WhatToDoLabel.Text = "Заполните поля значений для каждой альтернативы, пользуясь пользуясь 10-бальной шкалой, причем чем выше оценка, тем приоритетней альтернатива";
                         dataGridView.Columns.Add("Номер", "№");
                         dataGridView.Columns.Add("Альтернативы", "Альтернативы");
                         dataGridView.Columns.Add("Значение", "Значение");
@@ -827,7 +828,7 @@ namespace Системный_анализ
                         labelmeth.Visible = false;
                         dataGridView.Rows.Clear();
                         dataGridView.Columns.Clear();
-                        WhatToDoLabel.Text = "Звполните поля значений для каждой альтернативы, пользуясь числами натуарльного ряда. Наиболее важной альтернативе присваивается значение 1, менее важной - 2 и так далее";
+                        WhatToDoLabel.Text = "Заполните поля значений для каждой альтернативы, пользуясь числами натуарльного ряда. Наиболее важной альтернативе присваивается значение 1, менее важной - 2 и так далее";
                         //ID = DATA.exp[ProblemID].Count - 1;
 
                         dataGridView.Columns.Add("Номер", "№");
@@ -882,6 +883,8 @@ namespace Системный_анализ
 
                         textBoxFirst.Text = DATA.solutions[ProblemID][zX];
                         textBoxSecond.Text = DATA.solutions[ProblemID][zY];
+
+                        ID = iD;
 
                         if (DATA.MatrixX[ID][ProblemID][zX][zY] != 0 && DATA.MatrixX[ID][ProblemID][zX][zY] != 1)
                         {
@@ -983,7 +986,7 @@ namespace Системный_анализ
                             ListLabel.Visible = false;
                             PageTextBox.Visible = false;
                             PreviousButton.Visible = false;
-                            WhatToDoLabel.Text = "Звполните поля значений для каждой альтернативы числом от 0 до 1, сумма всех значений должна составлять единицу";
+                            WhatToDoLabel.Text = "Заполните поля значений для каждой альтернативы числом от 0 до 1, сумма всех значений должна составлять единицу";
 
                             for (int i = 0; i < DATA.experts.Count; i++)
                                 if (DATA.exp[ProblemID].Contains(DATA.experts[ID][i])) break;
@@ -1090,7 +1093,7 @@ namespace Системный_анализ
                         dataGridView.Columns.Clear();
 
                         //ID = DATA.exp[ProblemID].Count - 1;
-                        WhatToDoLabel.Text = "Звполните поля значений для каждой альтернативы, пользуясь пользуяст 10-бальной шкалой, причем чем выше оенка, тем приоритетней альтернатива";
+                        WhatToDoLabel.Text = "Заполните поля значений для каждой альтернативы, пользуясь пользуясь 10-бальной шкалой, причем чем выше оценка, тем приоритетней альтернатива";
                         dataGridView.Columns.Add("Номер", "№");
                         dataGridView.Columns.Add("Альтернативы", "Альтернативы");
                         dataGridView.Columns.Add("Значение", "Значение");
@@ -1146,7 +1149,7 @@ namespace Системный_анализ
                             }
 
                         }
-                        WhatToDoLabel.Text = "Звполните поля значений для каждой альтернативы, пользуясь числами натуарльного ряда. Наиболее важной альтернативе присваивается значение 1, менее важной - 2 и так далее";
+                        WhatToDoLabel.Text = "Заполните поля значений для каждой альтернативы, пользуясь числами натуарльного ряда. Наиболее важной альтернативе присваивается значение 1, менее важной - 2 и так далее";
                         labelmeth.Visible = false;
                         dataGridView.Rows.Clear();
                         dataGridView.Columns.Clear();
@@ -1204,6 +1207,7 @@ namespace Системный_анализ
             DialogResult dialogResult = MessageBox.Show("Вы уверены, что хотите закончить оценку? Внесение изменений после завершения будет невозможным", "Подтверждение действия", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                temp = iD;
                 for (int i = 0; i < DATA.Problems.Count; i++)
                 {
                     if (DATA.experts[temp][4].Contains(DATA.Problems[i][0]))

@@ -533,12 +533,12 @@ namespace Системный_анализ
                     F.Add(new List<double>());
                     for (int j = 0; j < DATA.MatrixX[i][this.e.RowIndex].Count; j++)
                     {
-                        F[i].Add(0);
+                        F[F.Count - 1].Add(0);
                         for (int k = 0; k < DATA.MatrixX[i][this.e.RowIndex].Count; k++)
                         {
                             if (j == k)
                                 continue;
-                            F[i][j] += DATA.MatrixX[i][this.e.RowIndex][j][k];
+                            F[F.Count - 1][j] += DATA.MatrixX[i][this.e.RowIndex][j][k];
 
                         }
                     }
@@ -772,7 +772,7 @@ namespace Системный_анализ
                 for (int i = 0; i < DATA.exp[this.e.RowIndex].Count; i++)
                 {
                     v[j] += Convert.ToDouble(DATA.Research[this.e.RowIndex][1][i][j]) * S[i];
-               
+
                 }
             }
 
@@ -1067,15 +1067,14 @@ namespace Системный_анализ
                            
 
                     }
-                    
 
                     for (int j = 0; j < DATA.experts.Count; j++)
                     {
-                        if (DATA.experts[tmp.RowIndex][0] == DataCurrentExperts.Rows[j].Cells[0].Value)
+                        if (DATA.experts[j][0] == DataCurrentExperts.Rows[tmp.RowIndex].Cells[0].Value)
                         {
                             if (alrd != -1)
                             {
-                                for (int i = 0; i <  DataCurrentExperts.Rows.Count; i++)
+                                for (int i = 0; i < DataCurrentExperts.Rows.Count; i++)
                                 {
                                     if (DataCurrentExperts.Rows[i].Cells[4].Value == "Метод парных сравнений")
                                     {
@@ -1685,6 +1684,8 @@ namespace Системный_анализ
 
                     DATA.Formulations.RemoveAt(this.e.RowIndex);
 
+                    DATA.exp.RemoveAt(this.e.RowIndex);
+
                     back.count--;
 
                     for (int i = 0; i < DATA.experts.Count; i++)
@@ -1692,9 +1693,11 @@ namespace Системный_анализ
                         if (DATA.experts[i][4].Contains(substr))
                         {
                             DATA.Matrix[i].RemoveAt(this.e.RowIndex);
+                            DATA.MatrixX[i].RemoveAt(this.e.RowIndex);
                             DATA.experts[i][4] = DATA.experts[i][4].Replace(substr, "");
                         }
                     }
+
 
                     DATA.ready.RemoveAt(this.e.RowIndex);
 
