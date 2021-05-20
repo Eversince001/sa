@@ -72,7 +72,7 @@
             // BackButton
             // 
             this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BackButton.Location = new System.Drawing.Point(12, 773);
+            this.BackButton.Location = new System.Drawing.Point(12, 906);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(225, 43);
             this.BackButton.TabIndex = 0;
@@ -187,13 +187,13 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(239, 24);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Форумлировка проблемы";
+            this.label1.Text = "Формулировка проблемы";
             // 
             // BackEditorButton
             // 
             this.BackEditorButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BackEditorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BackEditorButton.Location = new System.Drawing.Point(12, 774);
+            this.BackEditorButton.Location = new System.Drawing.Point(12, 906);
             this.BackEditorButton.Name = "BackEditorButton";
             this.BackEditorButton.Size = new System.Drawing.Size(225, 43);
             this.BackEditorButton.TabIndex = 8;
@@ -209,7 +209,7 @@
             this.tabControl2.Location = new System.Drawing.Point(12, 247);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1106, 520);
+            this.tabControl2.Size = new System.Drawing.Size(1106, 620);
             this.tabControl2.TabIndex = 9;
             // 
             // tabPage5
@@ -218,7 +218,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1098, 494);
+            this.tabPage5.Size = new System.Drawing.Size(1098, 594);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Результаты оценки";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -230,7 +230,7 @@
             this.ResultsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ResultsView.Location = new System.Drawing.Point(0, 3);
             this.ResultsView.Name = "ResultsView";
-            this.ResultsView.Size = new System.Drawing.Size(1098, 491);
+            this.ResultsView.Size = new System.Drawing.Size(1098, 591);
             this.ResultsView.TabIndex = 0;
             this.ResultsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ResultsView_CellContentClick);
             // 
@@ -241,7 +241,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1098, 494);
+            this.tabPage4.Size = new System.Drawing.Size(1098, 594);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Оценка каждого эксперта";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -270,7 +270,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(893, 774);
+            this.button1.Location = new System.Drawing.Point(893, 906);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(225, 43);
             this.button1.TabIndex = 10;
@@ -282,7 +282,7 @@
             // 
             this.ProblemSolvedButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ProblemSolvedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProblemSolvedButton.Location = new System.Drawing.Point(431, 774);
+            this.ProblemSolvedButton.Location = new System.Drawing.Point(431, 906);
             this.ProblemSolvedButton.Name = "ProblemSolvedButton";
             this.ProblemSolvedButton.Size = new System.Drawing.Size(225, 43);
             this.ProblemSolvedButton.TabIndex = 11;
@@ -294,7 +294,7 @@
             // 
             this.RedoProblemButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RedoProblemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RedoProblemButton.Location = new System.Drawing.Point(662, 774);
+            this.RedoProblemButton.Location = new System.Drawing.Point(662, 906);
             this.RedoProblemButton.Name = "RedoProblemButton";
             this.RedoProblemButton.Size = new System.Drawing.Size(225, 43);
             this.RedoProblemButton.TabIndex = 13;
@@ -306,7 +306,7 @@
             // 
             this.ResultsArchButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ResultsArchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ResultsArchButton.Location = new System.Drawing.Point(431, 774);
+            this.ResultsArchButton.Location = new System.Drawing.Point(431, 906);
             this.ResultsArchButton.Name = "ResultsArchButton";
             this.ResultsArchButton.Size = new System.Drawing.Size(225, 43);
             this.ResultsArchButton.TabIndex = 15;
@@ -319,7 +319,7 @@
             // 
             this.AltrListButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AltrListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AltrListButton.Location = new System.Drawing.Point(431, 774);
+            this.AltrListButton.Location = new System.Drawing.Point(431, 906);
             this.AltrListButton.Name = "AltrListButton";
             this.AltrListButton.Size = new System.Drawing.Size(225, 43);
             this.AltrListButton.TabIndex = 16;
@@ -330,7 +330,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(551, 772);
+            this.textBox1.Location = new System.Drawing.Point(551, 904);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(57, 20);
             this.textBox1.TabIndex = 17;
@@ -339,7 +339,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(443, 774);
+            this.label2.Location = new System.Drawing.Point(443, 906);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 16);
             this.label2.TabIndex = 18;
@@ -359,7 +359,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1130, 829);
+            this.ClientSize = new System.Drawing.Size(1130, 961);
             this.Controls.Add(this.AResultsView);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);

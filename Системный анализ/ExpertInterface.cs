@@ -34,9 +34,74 @@ namespace Системный_анализ
             LabelBoth.Click += new EventHandler(setBoth);
             labelmeth.Click += new EventHandler(setS);
             dataGridView.CellValueChanged += dataGridView_CellValueChanged;
+            numericUpDown1.ValueChanged += numericValueChanged;
 
         }
+        private void numericValueChanged(Object sender, EventArgs e)
+        {
+            if (numericUpDown1.Value == Convert.ToInt32(DATA.S))
+            {
+                if (textBoxFirst.BackColor == Color.Aquamarine && textBoxSecond.BackColor != Color.Aquamarine)
+                {
+                    return;
+                }
+                else
+                {
 
+                    if (textBoxSecond.BackColor == Color.Aquamarine || labelmeth.BackColor == Color.Aquamarine)
+                    {
+                        End--;
+                    }
+
+                    numericUpDown1.Value = Convert.ToInt32(DATA.S);
+                    DATA.MatrixX[ID][ProblemID][zX][zY] = 1;
+                    DATA.MatrixX[ID][ProblemID][zY][zX] = 0;
+
+                    textBoxFirst.BackColor = Color.Aquamarine;
+                    textBoxSecond.BackColor = Color.White;
+
+                    End++;
+
+                    if (End == ((DATA.solutions[ProblemID].Count * DATA.solutions[ProblemID].Count) - DATA.solutions[ProblemID].Count) / 2) Meth[4] = true;
+                }
+
+                labelmeth.BackColor = Color.White;
+                return;
+            }
+
+            if (numericUpDown1.Value == 0)
+            {
+                if (textBoxFirst.BackColor != Color.Aquamarine && textBoxSecond.BackColor == Color.Aquamarine)
+                {
+                    return;
+                }
+                else
+                {
+                    if (textBoxFirst.BackColor == Color.Aquamarine)
+                    {
+                        End--;
+                    }
+                    DATA.MatrixX[ID][ProblemID][zX][zY] = 0;
+                    DATA.MatrixX[ID][ProblemID][zY][zX] = 1;
+                    numericUpDown1.Value = 0;
+                    textBoxFirst.BackColor = Color.White;
+                    textBoxSecond.BackColor = Color.Aquamarine;
+
+                    End++;
+
+                    if (End == ((DATA.solutions[ProblemID].Count * DATA.solutions[ProblemID].Count) - DATA.solutions[ProblemID].Count) / 2) Meth[4] = true;
+                }
+
+                labelmeth.BackColor = Color.White;
+                return;
+            }
+            else
+            {
+                textBoxFirst.BackColor = Color.White;
+                textBoxSecond.BackColor = Color.White;
+            }
+            
+        }
         private bool isNumber(String str)
         {
             try
@@ -332,7 +397,7 @@ namespace Системный_анализ
                         Method = 1;
                         {
                             for (int i = 0; i < DATA.experts.Count; i++)
-                                if (DATA.exp[ProblemID].Contains(DATA.experts[ID][i])) break;
+                                if (DATA.exp[ProblemID].Contains(DATA.experts[ID][0])) break;
                                 else DATA.exp[ProblemID].Add(DATA.experts[ID][0]);
 
                             temp = ID;
@@ -340,7 +405,7 @@ namespace Системный_анализ
                             for (int i = 0; i < DATA.experts.Count; i++)
                             {
                                 if (ID == temp)
-                                    for (int j = 0; j < DATA.exp.Count; j++)
+                                    for (int j = 0; j < DATA.exp[ProblemID].Count; j++)
                                     {
                                         if (DATA.exp[ProblemID][j] == DATA.experts[ID][i])
                                         {
@@ -382,7 +447,7 @@ namespace Системный_анализ
                                 dataGridView.Rows.Add();
                                 dataGridView.Rows[i].Cells[0].Value = (i + 1).ToString();
                                 dataGridView.Rows[i].Cells[1].Value = DATA.solutions[ProblemID][i];
-                                if (DATA.Research[ProblemID][Method][0][i] != "0")
+                                if (Convert.ToDouble(DATA.Research[ProblemID][Method][ID][i]) > 0)
                                     dataGridView.Rows[i].Cells[2].Value = DATA.Research[ProblemID][Method][ID][i];
                             }
 
@@ -611,6 +676,7 @@ namespace Системный_анализ
                         End--;
                     }
 
+                    numericUpDown1.Value = Convert.ToInt32(DATA.S);
                     DATA.MatrixX[ID][ProblemID][zX][zY] = 1;
                     DATA.MatrixX[ID][ProblemID][zY][zX] = 0;
 
@@ -669,7 +735,7 @@ namespace Системный_анализ
                             PreviousButton.Visible = false;
 
                             for (int i = 0; i < DATA.experts.Count; i++)
-                                if (DATA.exp[ProblemID].Contains(DATA.experts[ID][i])) break;
+                                if (DATA.exp[ProblemID].Contains(DATA.experts[ID][0])) break;
                                 else DATA.exp[ProblemID].Add(DATA.experts[ID][0]);
 
                             temp = ID;
@@ -677,7 +743,7 @@ namespace Системный_анализ
                             for (int i = 0; i < DATA.experts.Count; i++)
                             {
                                 if (ID == temp)
-                                    for (int j = 0; j < DATA.exp.Count; j++)
+                                    for (int j = 0; j < DATA.exp[ProblemID].Count; j++)
                                     {
                                         if (DATA.exp[ProblemID][j] == DATA.experts[ID][i])
                                         {
@@ -719,7 +785,7 @@ namespace Системный_анализ
                                 dataGridView.Rows.Add();
                                 dataGridView.Rows[i].Cells[0].Value = (i + 1).ToString();
                                 dataGridView.Rows[i].Cells[1].Value = DATA.solutions[ProblemID][i];
-                                if (DATA.Research[ProblemID][Method][0][i] != "0")
+                                if (Convert.ToDouble(DATA.Research[ProblemID][Method][ID][i]) > 0)
                                     dataGridView.Rows[i].Cells[2].Value = DATA.Research[ProblemID][Method][ID][i];
                             }
 
@@ -748,7 +814,7 @@ namespace Системный_анализ
                         for (int i = 0; i < DATA.experts.Count; i++)
                         {
                             if (ID == temp)
-                                for (int j = 0; j < DATA.exp.Count; j++)
+                                for (int j = 0; j < DATA.exp[ProblemID].Count; j++)
                                 {
                                     if (DATA.exp[ProblemID][j] == DATA.experts[ID][i])
                                     {
@@ -790,7 +856,7 @@ namespace Системный_анализ
                             dataGridView.Rows.Add();
                             dataGridView.Rows[i].Cells[0].Value = (i + 1).ToString();
                             dataGridView.Rows[i].Cells[1].Value = DATA.solutions[ProblemID][i];
-                            if (DATA.Research[ProblemID][Method][0][i] != "0")
+                            if (Convert.ToDouble(DATA.Research[ProblemID][Method][ID][i]) > 0)
                                 dataGridView.Rows[i].Cells[2].Value = DATA.Research[ProblemID][Method][ID][i];
                         }
 
@@ -802,7 +868,7 @@ namespace Системный_анализ
                     {
 
                         for (int i = 0; i < DATA.experts.Count; i++)
-                            if (DATA.exp[ProblemID].Contains(DATA.experts[ID][i])) break;
+                            if (DATA.exp[ProblemID].Contains(DATA.experts[ID][0])) break;
                             else DATA.exp[ProblemID].Add(DATA.experts[ID][0]);
 
                         temp = ID;
@@ -810,7 +876,7 @@ namespace Системный_анализ
                         for (int i = 0; i < DATA.experts.Count; i++)
                         {
                             if (ID == temp)
-                                for (int j = 0; j < DATA.exp.Count; j++)
+                                for (int j = 0; j < DATA.exp[ProblemID].Count; j++)
                                 {
                                     if (DATA.exp[ProblemID][j] == DATA.experts[ID][i])
                                     {
@@ -853,7 +919,7 @@ namespace Системный_анализ
                             dataGridView.Rows.Add();
                             dataGridView.Rows[i].Cells[0].Value = (i + 1).ToString();
                             dataGridView.Rows[i].Cells[1].Value = DATA.solutions[ProblemID][i];
-                            if (DATA.Research[ProblemID][Method][0][i] != "0")
+                            if (Convert.ToDouble(DATA.Research[ProblemID][Method][ID][i]) > 0)
                                 dataGridView.Rows[i].Cells[2].Value = DATA.Research[ProblemID][Method][ID][i];
                         }
 
@@ -906,13 +972,17 @@ namespace Системный_анализ
                             labelmeth.BackColor = Color.White;
                         }
 
-                        numericUpDown1.Maximum = Convert.ToInt32(DATA.S) - 1;
-                        numericUpDown1.Minimum = 1;
+                        numericUpDown1.Maximum = Convert.ToInt32(DATA.S);
+                        numericUpDown1.Minimum = 0;
 
                         labelmeth.Text = "Альтернатива 1 предпочтительней альтернативы 2 в ";
 
                         dataGridView.Visible = false;
 
+                        if (((DATA.solutions[ProblemID].Count * DATA.solutions[ProblemID].Count) - DATA.solutions[ProblemID].Count) / 2 < 2)
+                        {
+                            NextButt.Enabled = false;
+                        }
 
                         break;
                     }
@@ -989,7 +1059,7 @@ namespace Системный_анализ
                             WhatToDoLabel.Text = "Заполните поля значений для каждой альтернативы числом от 0 до 1, сумма всех значений должна составлять единицу";
 
                             for (int i = 0; i < DATA.experts.Count; i++)
-                                if (DATA.exp[ProblemID].Contains(DATA.experts[ID][i])) break;
+                                if (DATA.exp[ProblemID].Contains(DATA.experts[ID][0])) break;
                                 else DATA.exp[ProblemID].Add(DATA.experts[ID][0]);
 
                             temp = ID;
@@ -997,7 +1067,7 @@ namespace Системный_анализ
                             for (int i = 0; i < DATA.experts.Count; i++)
                             {
                                 if (ID == temp)
-                                    for (int j = 0; j < DATA.exp.Count; j++)
+                                    for (int j = 0; j < DATA.exp[ProblemID].Count; j++)
                                     {
                                         if (DATA.exp[ProblemID][j] == DATA.experts[ID][i])
                                         {
@@ -1039,7 +1109,7 @@ namespace Системный_анализ
                                 dataGridView.Rows.Add();
                                 dataGridView.Rows[i].Cells[0].Value = (i + 1).ToString();
                                 dataGridView.Rows[i].Cells[1].Value = DATA.solutions[ProblemID][i];
-                                if (DATA.Research[ProblemID][Method][0][i] != "0")
+                                if (Convert.ToDouble(DATA.Research[ProblemID][Method][ID][i]) > 0)
                                     dataGridView.Rows[i].Cells[2].Value = DATA.Research[ProblemID][Method][ID][i];
                             }
 
@@ -1066,7 +1136,7 @@ namespace Системный_анализ
                         labelmeth.Visible = false;
 
                         for (int i = 0; i < DATA.experts.Count; i++)
-                            if (DATA.exp[ProblemID].Contains(DATA.experts[ID][i])) break;
+                            if (DATA.exp[ProblemID].Contains(DATA.experts[ID][0])) break;
                             else DATA.exp[ProblemID].Add(DATA.experts[ID][0]);
 
                         temp = ID;
@@ -1074,7 +1144,7 @@ namespace Системный_анализ
                         for (int i = 0; i < DATA.experts.Count; i++)
                         {
                             if (ID == temp)
-                                for (int j = 0; j < DATA.exp.Count; j++)
+                                for (int j = 0; j < DATA.exp[ProblemID].Count; j++)
                                 {
                                     if (DATA.exp[ProblemID][j] == DATA.experts[ID][i])
                                     {
@@ -1116,7 +1186,7 @@ namespace Системный_анализ
                             dataGridView.Rows.Add();
                             dataGridView.Rows[i].Cells[0].Value = (i + 1).ToString();
                             dataGridView.Rows[i].Cells[1].Value = DATA.solutions[ProblemID][i];
-                            if (DATA.Research[ProblemID][Method][0][i] != "0")
+                            if (Convert.ToDouble(DATA.Research[ProblemID][Method][ID][i]) > 0)
                                 dataGridView.Rows[i].Cells[2].Value = DATA.Research[ProblemID][Method][ID][i];
                         }
 
@@ -1127,7 +1197,7 @@ namespace Системный_анализ
                 case 2:
                     {
                         for (int i = 0; i < DATA.experts.Count; i++)
-                            if (DATA.exp[ProblemID].Contains(DATA.experts[ID][i])) break;
+                            if (DATA.exp[ProblemID].Contains(DATA.experts[ID][0])) break;
                             else DATA.exp[ProblemID].Add(DATA.experts[ID][0]);
 
                         temp = ID;
@@ -1135,7 +1205,7 @@ namespace Системный_анализ
                         for (int i = 0; i < DATA.experts.Count; i++)
                         {
                             if (ID == temp)
-                                for (int j = 0; j < DATA.exp.Count; j++)
+                                for (int j = 0; j < DATA.exp[ProblemID].Count; j++)
                                 {
                                     if (DATA.exp[ProblemID][j] == DATA.experts[ID][i])
                                     {
@@ -1178,7 +1248,7 @@ namespace Системный_анализ
                             dataGridView.Rows.Add();
                             dataGridView.Rows[i].Cells[0].Value = (i + 1).ToString();
                             dataGridView.Rows[i].Cells[1].Value = DATA.solutions[ProblemID][i];
-                            if (DATA.Research[ProblemID][Method][0][i] != "0")
+                            if (Convert.ToDouble(DATA.Research[ProblemID][Method][ID][i]) > 0)
                                 dataGridView.Rows[i].Cells[2].Value = DATA.Research[ProblemID][Method][ID][i];
                         }
 
@@ -1397,7 +1467,7 @@ namespace Системный_анализ
                     }
                     DATA.MatrixX[ID][ProblemID][zX][zY] = 0;
                     DATA.MatrixX[ID][ProblemID][zY][zX] = 1;
-
+                    numericUpDown1.Value = 0;
                     textBoxFirst.BackColor = Color.White;
                     textBoxSecond.BackColor = Color.Aquamarine;
 
